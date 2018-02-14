@@ -2,6 +2,7 @@ package sh.okx.consummo.scheduler;
 
 import java.util.Queue;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.function.Supplier;
 
 import org.bukkit.plugin.Plugin;
 
@@ -24,19 +25,27 @@ public class SchedulerChain {
   }
 
   public SchedulerChain sync(Runnable runnable) {
+    return sync(() -> { runnable.run(); return true; });
+  }
+
+  public SchedulerChain sync(Supplier<Boolean> shouldContinue) {
     return addTask(new SyncTask() {
       @Override
-      public void run() {
-        runnable.run();
+      public Boolean get() {
+        return shouldContinue.get();
       }
     });
   }
 
   public SchedulerChain async(Runnable runnable) {
+    return async(() -> { runnable.run(); return true; });
+  }
+
+  public SchedulerChain async(Supplier<Boolean> shouldContinue) {
     return addTask(new AsyncTask() {
       @Override
-      public void run() {
-        runnable.run();
+      public Boolean get() {
+        return shouldContinue.get();
       }
     });
   }
