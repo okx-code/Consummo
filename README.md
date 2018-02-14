@@ -7,7 +7,7 @@ Feel free to copy any of the APIs into your own code.
 - [Updater](#updater) - automatically update your plugin
 - [Scheduler](#scheduler) - easily change execution of code into different threads
 - [GUI](#gui) - create simple GUIs with listeners
-- [Item Builder](#item builder) - create items in one line
+- [Item Builder](#item-builder) - create items in one line
 
 # Updater
 
