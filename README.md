@@ -133,6 +133,18 @@ You can easily convert a user input such as `1d and 5 hours` into
 something like nanoseconds to store in a database with this API.
 The API is accurate to a second.
 
+The API will throw an `IllegalArgumentException` if you use input something like `4asdf`.
+
+What can be parsed:
+- For seconds: s, secs, seconds, sec, second
+- For minutes: m, mins, minutes, min, minute
+- For hours: h, hr, hrs, hours, hour
+- For days: d, dy, dys, day, days
+- For weeks: w, week, weeks
+- For months: m, mon, mnth, month, months
+- For years: y, yr, yrs, year, years
+Spaces, commas, and the word 'and' will be ignored.
+
 ## Usage
 
 ```java
@@ -146,4 +158,4 @@ new TimeApi(2593);
 time.reparse("and 1months 5day, 3 s"); // 1 month, 5 days, 3 seconds
 ```
 
-This is also available as a spigot resource [here](https://www.spigotmc.org/resources/timeapi.23076/)
+This is also available as a spigot resource [here](https://www.spigotmc.org/resources/timeapi.23076/).
