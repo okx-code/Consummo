@@ -7,7 +7,7 @@ public abstract class AsyncTask extends Task {
   @Override
   public void schedule(SchedulerChain callback, Plugin plugin, long delay) {
     Bukkit.getScheduler().runTaskLaterAsynchronously(plugin, () -> {
-      if(this.get()) {
+      if (this.get()) {
         callback.next();
       }
     }, delay);

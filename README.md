@@ -8,6 +8,7 @@ Feel free to copy any of the APIs into your own code.
 - [Scheduler](#scheduler) - easily change execution of code into different threads
 - [GUI](#gui) - create simple GUIs with listeners
 - [Item Builder](#item-builder) - create items in one line
+- [Time API](#time-api) - parse user input into a time unit such as nanoseconds, very versatile
 
 # Updater
 
@@ -125,3 +126,24 @@ It has the following methods:
 - <code>**ItemBuilder** 	unbreakable()</code>
 
 You can either construct it with no arguments, or provide a `Material`.
+
+# Time API
+
+You can easily convert a user input such as `1d and 5 hours` into 
+something like nanoseconds to store in a database with this API.
+The API is accurate to a second.
+
+## Usage
+
+```java
+TimeApi time = new TimeApi("1d and 5 hours");
+ban(player, time.getNanoseconds());
+
+// you may also construct it with a specific amount of seconds
+new TimeApi(2593);
+
+// or reuse a TimeApi instance for another time
+time.reparse("and 1months 5day, 3 s"); // 1 month, 5 days, 3 seconds
+```
+
+This is also available as a spigot resource [here](https://www.spigotmc.org/resources/timeapi.23076/)

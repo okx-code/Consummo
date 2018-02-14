@@ -1,8 +1,8 @@
 package sh.okx.consummo.scheduler;
 
-import org.bukkit.plugin.Plugin;
-
 import java.util.function.Supplier;
+
+import org.bukkit.plugin.Plugin;
 
 public abstract class Task implements Supplier<Boolean> {
   public abstract void schedule(SchedulerChain callback, Plugin plugin, long delay);

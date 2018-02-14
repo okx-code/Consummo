@@ -7,7 +7,7 @@ public abstract class SyncTask extends Task {
   @Override
   public void schedule(SchedulerChain callback, Plugin plugin, long delay) {
     Bukkit.getScheduler().runTaskLater(plugin, () -> {
-      if(this.get()) {
+      if (this.get()) {
         callback.next();
       }
     }, delay);
